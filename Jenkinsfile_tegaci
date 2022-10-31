@@ -1,10 +1,10 @@
 pipeline{
     agent any
-    /*
+    
     environment{
-        DOCKERHUB_CREDENTIALS=credentials('dockcre')
+        DOCKERHUB_CREDENTIALS=credentials('dockerhubcredentials')
     }
-    */
+    
     tools{
         maven "maven3.8.4"
     }
@@ -19,7 +19,7 @@ pipeline{
                 sh "mvn clean package"
             }
         }
-        /*
+        
         stage('CodeQuality'){
             steps{
                 sh "mvn sonar:sonar"
@@ -38,7 +38,7 @@ pipeline{
         
         stage('Build Docker Image'){
             steps{
-                sh "docker build -t ayukdavidashu/maven-web-app:1.3.0 ."
+                sh "docker build -t tegamoore05/maven-app:1.0.0 ."
                
                 echo "build image completed"
             }
@@ -52,10 +52,10 @@ pipeline{
         }
         stage('Push Image to Dockerhub'){
             steps{
-                sh "docker push ayukdavidashu/maven-web-app:1.3.0"
+                sh "docker push tegamoore05/maven-app:1.0.0"
                 echo "push image complete"
             }
         }
- */       
+       
     }
 }
