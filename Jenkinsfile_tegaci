@@ -38,7 +38,7 @@ pipeline{
         
         stage('Build Docker Image'){
             steps{
-                sh "docker build -t tegamoore05/maven-app:1.0.0 ."
+                sh "sudo docker build -t tegamoore05/maven-app:1.0.0 ."
                
                 echo "build image completed"
             }
@@ -46,13 +46,13 @@ pipeline{
        
         stage('Login to Dockerhub'){
             steps{
-                sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
+                sh "echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
                 echo "login complete"
             }
         }
         stage('Push Image to Dockerhub'){
             steps{
-                sh "docker push tegamoore05/maven-app:1.0.0"
+                sh "sudo docker push tegamoore05/maven-app:1.0.0"
                 echo "push image complete"
             }
         }
