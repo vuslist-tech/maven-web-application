@@ -38,7 +38,7 @@ pipeline{
         
         stage('Build Docker Image'){
             steps{
-                sh "docker build -t tegamoore05/maven-app:1.0.0 ."
+                sh "docker build -t tegamoore05/maven-app:1.1.0 ."
                
                 echo "build image completed"
             }
@@ -52,7 +52,7 @@ pipeline{
         }
         stage('Push Image to Dockerhub'){
             steps{
-                sh "docker push tegamoore05/maven-app:1.0.0"
+                sh "docker push tegamoore05/maven-app:1.1.0"
                 echo "push image complete"
             }
         }
