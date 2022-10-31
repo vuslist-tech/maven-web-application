@@ -1,0 +1,61 @@
+pipeline{
+    agent any
+    /*
+    environment{
+        DOCKERHUB_CREDENTIALS=credentials('dockcre')
+    }
+    */
+    tools{
+        maven "maven3.8.4"
+    }
+    stages{
+        stage('GitClone'){
+            steps{
+                git "https://github.com/vuslist-tech/maven-web-application"
+            }
+        }
+        stage('TestBuild'){
+            steps{
+                sh "mvn clean package"
+            }
+        }
+        /*
+        stage('CodeQuality'){
+            steps{
+                sh "mvn sonar:sonar"
+            }
+        }
+        stage('UpLoadArtifacts'){
+            steps{
+                sh "mvn deploy"
+            }
+        }
+        stage('Messages'){
+            steps{
+                sh "echo ci job successful"
+            }
+        }
+        
+        stage('Build Docker Image'){
+            steps{
+                sh "docker build -t ayukdavidashu/maven-web-app:1.3.0 ."
+               
+                echo "build image completed"
+            }
+        }
+       
+        stage('Login to Dockerhub'){
+            steps{
+                sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin"
+                echo "login complete"
+            }
+        }
+        stage('Push Image to Dockerhub'){
+            steps{
+                sh "docker push ayukdavidashu/maven-web-app:1.3.0"
+                echo "push image complete"
+            }
+        }
+ */       
+    }
+}
